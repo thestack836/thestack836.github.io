@@ -1,0 +1,3 @@
+Id	id	name	_health	attackDamage	abilityPower	armor	magicResist	reviveTimes	reviveDuration	deathDuration	abilities	prefab
+30001	30001	Demon_001	200	300	0	0	0	0	0	0	300011	Prefabs/Battle/Towers/Demon/Demon_001/Demon_001
+40001	40001	Human_001	500	10000	0	0	0	0	0	0		Prefabs/Battle/Towers/Human/Human_001/Human_001
