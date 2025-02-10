@@ -38,6 +38,9 @@
 			-ms-interpolation-mode: nearest-neighbor;
 		}
 	</style>
+	<script>
+		var unityInstace = null;
+	</script>
 </head>
 
 <body>
@@ -104,6 +107,7 @@
 			createUnityInstance(canvas, config, progressHandler).then(function (instance) {
 				canvas = instance.Module.canvas;
 				onResize();
+				unityInstace = instance;
 				//instance.SetFullscreen(1);
 			});
 			window.addEventListener('resize', onResize);
@@ -118,6 +122,28 @@
 			}
 		</script>
 	</div>
+	<script type="module">
+		import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js'
+		import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js'
+		
+		// Initialize Firebase
+		const firebaseConfig = {
+		  apiKey: "AIzaSyBHqhCA7L317goFg4IlGBhtFNhkPbI-lOc",
+		  authDomain: "merge-cuisine.firebaseapp.com",
+		  projectId: "merge-cuisine",
+		  storageBucket: "merge-cuisine.firebasestorage.app",
+		  messagingSenderId: "159660439537",
+		  appId: "1:159660439537:web:a8cbbc62afa2183617b650",
+		  measurementId: "G-50KL8QHRPR"
+		};
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+		window.firebaseApp = app;
+		window.analytics = analytics;
+		window.logEvent = logEvent;
+	</script>
 </body>
 
 </html>
