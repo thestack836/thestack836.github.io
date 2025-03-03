@@ -14,6 +14,7 @@
 			overflow: visible;
 			padding: 0;
 			margin: 0;
+			
 		}
 
 		div#gameContainer {
@@ -59,6 +60,7 @@
 				productVersion: "1.0",
 			};
 			var logoImage;
+			var publisher;
 			var scaleToFit;
 			try {
 				scaleToFit = !!JSON.parse("false");
@@ -75,13 +77,26 @@
 				logoImage.src = "StreamingAssets/Title.png";
 				logoImage.style.position = "absolute";
 				logoImage.style.width = '40vw';
+				logoImage.style.maxWidth  = '300px';
 				logoImage.style.top = '30%';
 				logoImage.style.left = '50%';
 				logoImage.style.transform = 'translate(-50%, -50%)';
 				document.body.appendChild(logoImage);
+				
+				publisher = document.createElement("img");
+				publisher.src = "StreamingAssets/light-published.png";
+				publisher.style.position = "absolute";
+				publisher.style.width = '40vw';
+				publisher.style.maxWidth  = '250px';
+				publisher.style.bottom = '5%';
+				publisher.style.left = '50%';
+				publisher.style.transform = 'translate(-50%, -50%)';
+				document.body.appendChild(publisher);
+				
 			}
 			function clearProgress() {
 				 logoImage.style.display = "none";
+				 publisher.style.display = "none";
 			}
 			
 			function onResize() {
@@ -137,6 +152,12 @@
 				meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
 				document.getElementsByTagName('head')[0].appendChild(meta);
 			}
+			
+			try {
+				window.Telegram.WebApp.ready(); 
+				window.Telegram.WebApp.expand();
+			}
+			catch(ex){}
 		</script>
 	</div>
 	<script type="module">
